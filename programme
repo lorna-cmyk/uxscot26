@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>UX Scotland 2026 – Full Programme (edit the desc strings)</title>
+<style>
+  body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:1rem;background:#f5f5f5;}
+  h2{margin-bottom:1rem;}
+  .grid{
+    display:grid;
+    gap:1rem;
+    grid-template-columns:repeat(4,1fr);   /* four equal columns */
+  }
+  .card{
+    background:#fff;
+    border-radius:8px;
+    box-shadow:0 2px 6px rgba(0,0,0,.15);
+    padding:1rem;
+    cursor:pointer;
+    transition:transform .2s;
+  }
+  .card:hover{transform:translateY(-4px);}
+  .title{
+    font-size:1.1rem;
+    font-weight:bold;
+    margin-bottom:.5rem;
+    color:#1d5c65;               /* requested colour */
+  }
+  .speakers{font-size:.9rem;color:#555;margin-bottom:.5rem;}
+  .modal{
+    display:none;
+    position:fixed;top:0;left:0;width:100%;height:100%;
+    background:rgba(0,0,0,.6);
+    align-items:center;justify-content:center;
+  }
+  .modal-content{
+    background:#fff;
+    border-radius:8px;
+    max-width:720px;
+    width:90%;
+    max-height:85vh;
+    overflow:auto;
+    padding:1.5rem;
+    position:relative;
+  }
+  .close{
+    position:absolute;top:.5rem;right:.5rem;
+    font-size:1.3rem;background:none;border:none;cursor:pointer;
+  }
+  a.session-link{
+    font-size:.85rem;color:#1976d2;text-decoration:none;
+  }
+  a.session-link:hover{text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<h2>UX Scotland 2026 Programme</h2>
+
+<div class="grid" id="cards"></div>
+
+<!-- Modal (pop‑up) -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <button class="close" id="closeBtn">&times;</button>
+    <h3 id="modalTitle"></h3>
+    <p id="modalSpeakers"></p>
+    <div id="modalDesc"></div>               <!-- description may contain several paragraphs -->
+    <a id="modalLink" class="session-link" target="_blank">Open full session page</a>
+  </div>
+</div>
+
+<script>
+/* --------------------------------------------------------------
+   1️⃣  Session data – copy‑paste the whole list.  Replace the
+       placeholder text in each `desc` field with the real
+       description you want shown in the modal.
+   -------------------------------------------------------------- */
+const sessions = [
+  /* ------------------- Day 1 – Wednesday 10 June ------------------- */
+  {title:"You don’t need more grit: breaking the burnout cycle in UX",
+   speakers:"Sara Wachter‑Boettcher – CEO, Active Voice",
+   url:"https://uxscotland.net/programme/you-dont-need-more-grit-breaking-burnout-cycle-ux",
+   desc:`<p>Session details coming soon</p>`},
+  {title:"A.I‑11y: should we use large language models for accessibility?",
+   speakers:"Craig Abbott – TetraLogical",
+   url:"https://uxscotland.net/programme/ai-11y-should-we-use-large-language-models-accessibility",
+   desc:`<p>In this talk, Craig explores our current obsession with AI and its reliability in solving accessibility issues. </p><p>
+He shares research and experiments with various language models across the various disciplines of product design.</p><p> With lots of examples, good, bad, and weird, you'll learn to spot pitfalls and how to make more informed decisions when integrating AI into your own workflows…</p>`},
+  {title:"Evidence, not ego: the art of influencing without authority",
+   speakers:"Jennifer Blatz – BECU (Boeing Employee Credit Union)",
+   url:"https://uxscotland.net/programme/evidence-not-ego-art-influencing-without-authority",
+   desc:`<p>Do you have insights no one acts on? Stop yelling louder. </p><p> In this session, Jen shows UX researchers how to get leaders to actually listen. Use storytelling framing and tactical influence - not ego - to get work heard and done.  </p><p> Real-world stories, science-backed techniques and actionable tools included.</p>`},
+  {title:"Skipping to the second diamond: prototyping services faster with re‑usable parts",
+   speakers:"Kirsty Sinclair & Anusree Raju – The Scottish Government",
+   url:"https://uxscotland.net/programme/skipping-second-diamond-prototyping-services-faster-re-usable-parts",
+   desc:`<p>At Scottish Government we’re working under constraints – our design team is small and has been affected by hiring freezes in recent years, our projects don’t have the budget or time for lengthy discoveries.</p><p> But in the last decade design has won a seat at the table, and we’ve built up great experience from the programmes of work we have led on; research repositories, tech components, common platforms, service patterns etc…</p>`},
+  {title:"Bring your personas alive with behaviour science and AI",
+   speakers:"Laura Dantonio – Wood Mackenzie; Chiara Pontiggia – Independent",
+   url:"https://uxscotland.net/programme/bring-your-personas-alive-behaviour-science-and-ai",
+   desc:`<p>Personas have always helped teams build empathy, but they’ve also always had limitations: static, idealised, and quickly outdated. </p><p> With AI, new possibilities are emerging: synthetic users and dynamic personas built from real customer signals. </p><p> But teams are unsure: Is this ethical? Is it useful? Where do I start?...</p>`},
+  {title:"Rinse and repeat? Designing when context and constraints change",
+   speakers:"Omar Idris – Perago",
+   url:"https://uxscotland.net/programme/rinse-and-repeat-designing-when-context-and-constraints-change",
+   desc:`<p>Design culture often celebrates reusable methods and repeatable frameworks. But as designers move between commercial and public contexts, the constraints and the stakes shift dramatically. </p><p> Drawing on experience from global FMCG innovation at Procter & Gamble through to public service and policy design at the Cabinet Office, Nesta and Perago, this talk explores why design isn’t always as simple as rinse and repeat.</p>`},
+  {title:"Designing in the squeeze: how constraints improve teams",
+   speakers:"Leonardo Caetano – Workhuman",
+   url:"https://uxscotland.net/programme/designing-squeeze-how-constraints-improve-teams",
+   desc:`<p>Teams rarely find ‘ideal conditions’ these days: fewer designers, constantly shifting priorities, tighter deadlines, and now, AI accelerating expectations. </p><p> This session explores how constraints - organisational, cultural, and resource‑related - can become catalysts for clearer strategy, stronger collaboration and more intentional design.</p>`},
+  {title:"The ROI of saying no: strategic prioritisation for design leaders",
+   speakers:"Venessa Bennett – Dye & Durham",
+   url:"https://uxscotland.net/programme/roi-saying-no-strategic-prioritisation-design-leaders",
+   desc:`<p>Early in my career, I thought being a good leader meant saying yes to everything. I was wrong. The turning point came when I repositioned UX research strategically and reduced post‑sale costs by 36%—not by doing more, but by doing the right things.</p><p> Every time your team says yes to a "quick win" or "urgent request," you're saying no to something that could actually move the business forward. This talk gives you permission to be strategic about where you invest your team's capacity…</p>`},
+  {title:"Object‑oriented UX in action: rebuilding a public sector website with structured content",
+   speakers:"Joey Gartin & Philippe Fara – Renfrewshire Council",
+   url:"https://uxscotland.net/programme/object-oriented-ux-action-rebuilding-public-sector-website-structured-content",
+   desc:`<p>Research and testing have proven that people navigate services and information by thinking in objects - in concrete nouns, not abstract verbs. But so many websites organise their content by taking the opposite approach.</p><p> Enter OOUX, a new approach to content and design developed by Sophia Prater…</p>`},
+  {title:"Designing beyond assumptions: how everyday constraints shape user experience",
+   speakers:"Kola Wale – Department for Work and Pensions (DWP)",
+   url:"https://uxscotland.net/programme/designing-beyond-assumptions-how-everyday-constraints-shape-user-experience",
+   desc:`<p>Every product and service carries traces of the people who built it, their expectations and their idea of what a “normal” user does. Similarly, designing within organisations means working with deadlines, pressure and a lot of best guesses. These assumptions can quietly shape services that exclude users.</p><p> In this session, Kola will use lived examples to show how small design choices can create significant barriers…</p>`},
+  {title:"Constraint‑as‑catalyst: the creative researcher’s SCAMPER guide to method adaptation",
+   speakers:"Rachel Abbott – Hippo",
+   url:"https://uxscotland.net/programme/constraint-catalyst-creative-researchers-scamper-guide-method-adaptation",
+   desc:`<p>The standard research playbook often fails when confronted with real‑world constraints: highly vulnerable user groups, strict security protocols, zero internet access, or rapid crisis events. </p><p> In these situations, relying on imagination and creative adaptation is an ethical and practical necessity.</p><p> This session moves beyond rigid templates, treating research design as a systematic creative practice…</p>`},
+  {title:"Navigating Your UX career in a competitive market",
+   speakers:"Jenny Björkman – Interaktiv Design Studio; Hilary Brownlie – Standard Life",
+   url:"https://uxscotland.net/programme/navigating-your-ux-career-competitive-market",
+   desc:`<p>he UX job market is tough. Roles are evolving, competition is fierce, and career progression can feel stalled. This interactive session will equip you with strategic tools to thrive despite uncertainty.</p><p> Raise your profile: hear from a qualified career coach and UX consultant on how to stand out through personal branding, networking, mentoring and public speaking…</p>`},
+  {title:"Designing in legacy software: the triumphs and the trap",
+   speakers:"Samantha Heighes",
+   url:"https://uxscotland.net/programme/designing-legacy-software-triumphs-and-trap",
+   desc:`<p>Samantha has worked in complex SaaS solutions and in UX terms, it’s the gift that keeps on giving. </p><p> Like much legacy software, it’s full of forgotten designs, unexpected behaviours and hidden, historical patterns that no longer match the expectations of today’s users.</p><p> This talk shares a practical approach and techniques for evolving enterprise software without a complete rewrite.</p>`},
+  {title:"Steel‑toed boots in the boardroom: designing factory floor solutions that stick",
+   speakers:"Christian Richards – The Weir Group",
+   url:"https://uxscotland.net/programme/steel-toed-boots-boardroom-designing-factory-floor-solutions-stick",
+   desc:`<p>Understanding user needs is the foundation of UX, but adoption is what makes solutions truly valuable.</p><p> At Weir, a global industrial manufacturer, the SMART Factory team thought they knew what factory operators needed. Yet their solutions were being ignored (or even physically broken!). </p><p> This talk shares how Weir’s UX team partnered with engineers…</p>`},
+  {title:"Transforming probation services: prototype to pilot in 6 weeks",
+   speakers:"Keara Drumm, Emma Sutcliffe‑Regan – TPXimpact; Carolina Pizatto – Ministry of Justice",
+   url:"https://uxscotland.net/programme/transforming-probation-services-prototype-pilot-6-weeks",
+   desc:`<p>The Ministry of Justice, HM Prison and Probation Service and TPXimpact partner to share their experience of going from prototype to pilot in 6 weeks. </p><p>This session will cover their innovative approach to transforming probation services through user‑centred design, research with vulnerable users and modern AI technology in order to combat the prison capacity crisis.</p>`},
+  {title:"Researching UX without a UI: cognitive methods under constraints",
+   speakers:"Natalia Mishina – JetBrains",
+   url:"https://uxscotland.net/programme/researching-ux-without-ui-cognitive-methods-under-constraints",
+   desc:`<p>What happens when you need to study UX in a product with no interface at all?</p><p>In this talk, Natalie will share her experiences researching the Kotlin programming language using cognitive methods, while navigating 2 constraints: no UI and time, and budget limits.</p><p> You’ll take part in small interactive exercises…</p>`},
+  {title:"Wrong answers only: why people lie on forms and surveys, and what do about",
+   speakers:"Caroline Jarrett – Effortmark Ltd",
+   url:"https://uxscotland.net/programme/wrong-answers-only-why-people-lie-forms-and-surveys-and-what-do-about",
+   desc:`<p>If you’re faced with the challenge of incorporating AI into your designs, what is the effect of pouring untruthful data into the AI? </p><p> In research in 2025, I discovered that nearly all of us admit to an occasional lie on a form or survey, for privacy reasons, because of uncertainty about the outcome, or because the question offers us wrong answers only.</p><p> Which led me to think: What are we doing in our own designs to account for similar behaviour?...</p>`},
+  {title:"Let’s debate: can AI actually solve our design problems?",
+   speakers:"Suhail Hussain & Tom Burrows – Government Digital Service",
+   url:"https://uxscotland.net/programme/lets-debate-can-ai-actually-solve-our-design-problems",
+   desc:`<p>As our design teams shrink and our budgets tighten, we face a paradox: AI is marketed as our productivity saviour while simultaneously threatening our roles. </p><p> Engineering teams have integrated AI into their workflows - can design and research do the same to address today's resource constraints?</p><p>This session will use the Debate Club conversation format…</p>`},
+
+  /* ------------------- Day 2 – Thursday 11 June ------------------- */
+  {title:"a firmament inside",
+   speakers:"Michael Kibedi – First and Fifteenth",
+   url:"https://uxscotland.net/programme/firmament-inside",
+   desc:`<p>Session details coming soon</p>`},
+  {title:"Why constraints make leadership visible",
+   speakers:"Tricia Rambharose – Redthread Consulting and Coaching",
+   url:"https://uxscotland.net/programme/why-constraints-make-leadership-visible",
+   desc:`<p>Constraints are a constant in modern work, whether you’re designing services, leading teams, or shaping strategy. Time, budget, organisational structures, and system complexity don’t just limit what’s possible, they reveal how we lead.</p><p>In this talk, Tricia reflects on how leadership shows up under constraint, not through authority or process, but through the choices we make when ideal options aren’t available….</p>`},
+  {title:"Practical steps towards a more inclusive practice",
+   speakers:"Stéphanie Krus – DWP Digital",
+   url:"https://uxscotland.net/programme/practical-steps-towards-more-inclusive-practice",
+   desc:`<p>There is a false belief that making your design accessible requires more time, more money and technical expertise.</p><p>This session is for people relatively new to inclusion and accessibility. It will focus on easy, free and quick practical steps.</p><p>You will be able to start implementing these practical steps without needing new tools or training, and it won’t take you a lot of time either…</p>`},
+  {title:"Navigating digital sustainability with design principles",
+   speakers:"Joanna Masraff & Sathpal Singh – Green PO",
+   url:"https://uxscotland.net/programme/navigating-digital-sustainability-design-principles",
+   desc:`<p>Do you want to bring digital sustainability into your work, but you don’t know where to start?</p><p>Design principles are an easy way to bring this into the holistic picture of your product thinking.</p><p>In this workshop, we will navigate the digital sustainability landscape under 3 themes: Materials, Energy and Societal Impact…</p>`},
+  {title:"Tools as old as time: ancient ways to visualise futures",
+   speakers:"Josie Vallely & Jayne Purcell – Social Security Scotland",
+   url:"https://uxscotland.net/programme/tools-old-time-ancient-ways-visualise-futures",
+   desc:`<p>Process maps, blueprints, user journeys... UX designers shape future worlds every day by visually mapping them. </p><p> We work with tight deadlines, basic tools and stakeholders with ever‑stretched attention spans. Can we embrace these conditions to supercharge our visual storytelling? </p><p> Humans have always made maps, or visualised stories, to influence change. In this session we will use examples from old Scottish ways of knowing…</p>`},
+  {title:"Design is Political",
+   speakers:"Jane Dolan – The Dolan Method",
+   url:"https://uxscotland.net/programme/design-political",
+   desc:`<p>This session explores what happens when design meets politics, when evidence, policy, constraints, and public opinion collide.</p><p> Drawing on real government projects, Jane shows how design decisions are never neutral, how to recognise political risks early, and how to stay true to user‑centred design in complex environments.</p>`},
+  {title:"What happens when familiar UI patterns aren’t universal",
+   speakers:"Guillaume Vaslin – ENNOstudio (AOE Group)",
+   url:"https://uxscotland.net/programme/what-happens-when-familiar-ui-patterns-arent-universal",
+   desc:`<p>Many digital interfaces rely on patterns assumed to be universal: buttons, forms, icons, navigation, error states. Yet these familiar elements can break when used across different cultures or age groups. </p><p> This session explores how everyday UX decisions are shaped by hidden cultural assumptions, and how teams can design more inclusive patterns even under tight constraints…</p>`},
+  {title:"Constraints are opportunities: pattern spotting",
+   speakers:"Jaskiran Kang – TPXImpact",
+   url:"https://uxscotland.net/programme/constraints-are-opportunities-pattern-spotting",
+   desc:`<p>We’re seeing huge overlaps across services and organisations. There’s a need to define the standards of good practice, so it becomes easier to apply repeatable patterns.</p><p>Many of us are problem solvers. But big complex knotty service outcomes need community, practice, and sector alignment. More than ever, this type of collaboration is needed. Patterns can create more consistent, efficient, and user‑centred services…</p>`},
+  {title:"Designing AI under pressure: keeping services safe, fair and human",
+   speakers:"Mark Skinner – Sopra Steria",
+   url:"https://uxscotland.net/programme/designing-ai-under-pressure-keeping-services-safe-fair-and-human",
+   desc:`<p>AI brings real opportunity, but it also brings pressure. </p><p> Deadlines compress, expectations rise, and teams often move faster than their thinking. That’s when people slip from view and risks pass by unnoticed.</p><p> In this talk, Mark shares practical ways design and research can steady AI work without slowing it down. Using five simple tools, he shows how to keep services aligned to real needs, reduce avoidable harm and use constraints as a catalyst for clearer, safer decisions. </p>`},
+  {title:"Cut through complexity – the OOPSI Framework",
+   speakers:"Jenny Martin – Collaborate Solutions Ltd",
+   url:"https://uxscotland.net/programme/cut-through-complexity-oopsi-framework",
+   desc:`<p>OOPSI (Outcomes–Outputs–Process–Scenarios–Inputs) is a collaborative framework that helps you break down complex problems, align across UX, product and engineering, and move from ideas to value quickly. </p><p> It provides a simple structure that strengthens storytelling, clarifies intent and builds shared understanding without heavy process…</p>`},
+  {title:"Make trauma‑informed design part of your style guide",
+   speakers:"Miriam Vaswani – Content Design London",
+   url:"https://uxscotland.net/programme/make-trauma-informed-design-part-your-style-guide",
+   desc:`<p>An evidence‑led style guide makes your products and services more accessible, by helping designers make consistent, useful and inclusive choices about language. </p><p> We can strengthen style guidance by incorporating evidence of how people use a product or service while experiencing trauma…</p>`},
+  {title:"Beyond human‑centred design: designing for the ‘more than human’ world",
+   speakers:"James Chudley – Independent",
+   url:"https://uxscotland.net/programme/beyond-human-centred-design-designing-more-human-world",
+   desc:`<p>Our quest to put people at the centre of the design process is outdated and must now evolve.</p><p>While human‑centred design has unquestionably helped improve lives, this relentless focus on people has blinded us to detrimental consequences for other species, our environment and climate…</p>`},
+  {title:"Vibes‑based data for your sanity",
+   speakers:"Reema Vadoliya",
+   url:"https://uxscotland.net/programme/vibes-based-data-your-sanity",
+   desc:`<p>With an abundance of data being produced, how do you know which data you should actually be utilising? There always seems to be too much data and simultaneously not enough. </p><p>When gut feeling isn't scientific enough, and complex data analysis can feel overwhelming, what approach do you take? Whatever role you work in, leave this session feeling excited by the constraints of data collection and analysis, and empowered to bring vibes into your (data) science.</p>`},
+  {title:"Reflection to action – your way forward",
+   speakers:"Laura Dalrymple – Tangity/NTT Data",
+   url:"https://uxscotland.net/programme/reflection-action-your-way-forward",
+   desc:`<p>How do you take that crucial first step toward a new chapter in your career?</p><p>Being flexible and responsive to changes in the working environment is nothing new.</p><p>
+In fact, UX is a space where there is an expectation that you are able to continuously adapt to new technologies, tools, and cultural shifts.</p>`},
+  {title:"What if… You Did It Anyway?",
+   speakers:"Jeroen van Geel -Creative Strategist",
+   url:"https://uxscotland.net/programme/what-if-you-did-it-anyway",
+   desc:`<p>Our field is full of rules. Patterns. Best practices. Constraints that are meant to help, but often tell us exactly where not to look.</p><p>This talk is an invitation to misbehave a little. To push against the obvious, break familiar patterns, and use experimentation to see what those constraints are really made of…</p>`}
+];
+
+/* --------------------------------------------------------------
+   2️⃣  Render the cards (title + speakers)
+   -------------------------------------------------------------- */
+const container = document.getElementById('cards');
+sessions.forEach((s, i) => {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.dataset.idx = i;               // keep index for click handling
+  card.innerHTML = `
+    <div class="title"><strong>${s.title}</strong></div>
+    <div class="speakers"><strong>${s.speakers}</strong></div>
+  `;
+  container.appendChild(card);
+});
+
+/* --------------------------------------------------------------
+   3️⃣  Modal handling – read the pre‑filled `desc` field.
+   -------------------------------------------------------------- */
+const modal = document.getElementById('modal');
+const modalTitle = document.getElementById('modalTitle');
+const modalSpeakers = document.getElementById('modalSpeakers');
+const modalDesc = document.getElementById('modalDesc');
+const modalLink = document.getElementById('modalLink');
+const closeBtn = document.getElementById('closeBtn');
+
+document.addEventListener('click', e => {
+  const card = e.target.closest('.card');
+  if (!card) return;
+
+  const idx = card.dataset.idx;
+  const sess = sessions[idx];
+
+  // Wrap title & speakers in <strong> for the modal as well
+  modalTitle.innerHTML = `<strong>${sess.title}</strong>`;
+  modalSpeakers.innerHTML = `<strong>${sess.speakers}</strong>`;
+  modalDesc.innerHTML = sess.desc || '<p>No description supplied.</p>';
+  modalLink.href = sess.url;
+  modalLink.textContent = 'Open full session page';
+
+  modal.style.display = 'flex';
+});
+
+closeBtn.onclick = () => modal.style.display = 'none';
+modal.onclick = e => { if (e.target===modal) modal.style.display='none'; };
+</script>
+
+</body>
+</html>
