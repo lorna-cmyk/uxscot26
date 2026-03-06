@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1">&lt;title&gt;UX Scotland 2026 – Full Programme (edit the desc strings)&lt;/title&gt;</p>
+<p class="p1">&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:1rem;background:#f5f5f5;}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>h2{margin-bottom:1rem;}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.grid{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display:grid;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap:1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>grid-template-columns:repeat(4,1fr); <span class="Apple-converted-space">  </span>/* four equal columns */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.card{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background:#fff;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius:8px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>box-shadow:0 2px 6px rgba(0,0,0,.15);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding:1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>cursor:pointer;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition:transform .2s;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.card:hover{transform:translateY(-4px);}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.title{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size:1.1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight:bold;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom:.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color:#1d5c65; <span class="Apple-converted-space">              </span>/* requested colour */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.speakers{font-size:.9rem;color:#555;margin-bottom:.5rem;}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.modal{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display:none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position:fixed;top:0;left:0;width:100%;height:100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background:rgba(0,0,0,.6);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items:center;justify-content:center;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.modal-content{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background:#fff;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius:8px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>max-width:720px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width:90%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>max-height:85vh;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>overflow:auto;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding:1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position:relative;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.close{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position:absolute;top:.5rem;right:.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size:1.3rem;background:none;border:none;cursor:pointer;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>a.session-link{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size:.85rem;color:#1976d2;text-decoration:none;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>a.session-link:hover{text-decoration:underline;}</p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h2&gt;UX Scotland 2026 Programme&lt;/h2&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="grid" id="cards"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- Modal (pop‑up) --&gt;</p>
+<p class="p1">&lt;div class="modal" id="modal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="modal-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="close" id="closeBtn"&gt;&amp;times;&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3 id="modalTitle"&gt;&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p id="modalSpeakers"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="modalDesc"&gt;&lt;/div&gt; <span class="Apple-converted-space">              </span>&lt;!-- description may contain several paragraphs --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a id="modalLink" class="session-link" target="_blank"&gt;Open full session page&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1">/* --------------------------------------------------------------</p>
+<p class="p1"><span class="Apple-converted-space">   </span>1️⃣<span class="Apple-converted-space">  </span>Session data – copy‑paste the whole list.<span class="Apple-converted-space">  </span>Replace the</p>
+<p class="p1"><span class="Apple-converted-space">       </span>placeholder text in each `desc` field with the real</p>
+<p class="p1"><span class="Apple-converted-space">       </span>description you want shown in the modal.</p>
+<p class="p1"><span class="Apple-converted-space">   </span>-------------------------------------------------------------- */</p>
+<p class="p1">const sessions = [</p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ------------------- Day 1 – Wednesday 10 June ------------------- */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"You don’t need more grit: breaking the burnout cycle in UX",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Sara Wachter‑Boettcher – CEO, Active Voice",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/you-dont-need-more-grit-breaking-burnout-cycle-ux",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;Session details coming soon&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"A.I‑11y: should we use large language models for accessibility?",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Craig Abbott – TetraLogical",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/ai-11y-should-we-use-large-language-models-accessibility",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;In this talk, Craig explores our current obsession with AI and its reliability in solving accessibility issues. &lt;/p&gt;&lt;p&gt;</p>
+<p class="p1">He shares research and experiments with various language models across the various disciplines of product design.&lt;/p&gt;&lt;p&gt; With lots of examples, good, bad, and weird, you'll learn to spot pitfalls and how to make more informed decisions when integrating AI into your own workflows…&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"Evidence, not ego: the art of influencing without authority",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Jennifer Blatz – BECU (Boeing Employee Credit Union)",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/evidence-not-ego-art-influencing-without-authority",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;Do you have insights no one acts on? Stop yelling louder. &lt;/p&gt;&lt;p&gt; In this session, Jen shows UX researchers how to get leaders to actually listen. Use storytelling framing and tactical influence - not ego - to get work heard and done.<span class="Apple-converted-space">  </span>&lt;/p&gt;&lt;p&gt; Real-world stories, science-backed techniques and actionable tools included.&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"Skipping to the second diamond: prototyping services faster with re‑usable parts",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Kirsty Sinclair &amp; Anusree Raju – The Scottish Government",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/skipping-second-diamond-prototyping-services-faster-re-usable-parts",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;At Scottish Government we’re working under constraints – our design team is small and has been affected by hiring freezes in recent years, our projects don’t have the budget or time for lengthy discoveries.&lt;/p&gt;&lt;p&gt; But in the last decade design has won a seat at the table, and we’ve built up great experience from the programmes of work we have led on; research repositories, tech components, common platforms, service patterns etc…&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"Bring your personas alive with behaviour science and AI",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Laura Dantonio – Wood Mackenzie; Chiara Pontiggia – Independent",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/bring-your-personas-alive-behaviour-science-and-ai",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;Personas have always helped teams build empathy, but they’ve also always had limitations: static, idealised, and quickly outdated. &lt;/p&gt;&lt;p&gt; With AI, new possibilities are emerging: synthetic users and dynamic personas built from real customer signals. &lt;/p&gt;&lt;p&gt; But teams are unsure: Is this ethical? Is it useful? Where do I start?...&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"Rinse and repeat? Designing when context and constraints change",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Omar Idris – Perago",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/rinse-and-repeat-designing-when-context-and-constraints-change",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;Design culture often celebrates reusable methods and repeatable frameworks. But as designers move between commercial and public contexts, the constraints and the stakes shift dramatically. &lt;/p&gt;&lt;p&gt; Drawing on experience from global FMCG innovation at Procter &amp; Gamble through to public service and policy design at the Cabinet Office, Nesta and Perago, this talk explores why design isn’t always as simple as rinse and repeat.&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"Designing in the squeeze: how constraints improve teams",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Leonardo Caetano – Workhuman",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/designing-squeeze-how-constraints-improve-teams",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;Teams rarely find ‘ideal conditions’ these days: fewer designers, constantly shifting priorities, tighter deadlines, and now, AI accelerating expectations. &lt;/p&gt;&lt;p&gt; This session explores how constraints - organisational, cultural, and resource‑related - can become catalysts for clearer strategy, stronger collaboration and more intentional design.&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"The ROI of saying no: strategic prioritisation for design leaders",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Venessa Bennett – Dye &amp; Durham",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/roi-saying-no-strategic-prioritisation-design-leaders",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;Early in my career, I thought being a good leader meant saying yes to everything. I was wrong. The turning point came when I repositioned UX research strategically and reduced post‑sale costs by 36%—not by doing more, but by doing the right things.&lt;/p&gt;&lt;p&gt; Every time your team says yes to a "quick win" or "urgent request," you're saying no to something that could actually move the business forward. This talk gives you permission to be strategic about where you invest your team's capacity…&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"Object‑oriented UX in action: rebuilding a public sector website with structured content",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Joey Gartin &amp; Philippe Fara – Renfrewshire Council",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/object-oriented-ux-action-rebuilding-public-sector-website-structured-content",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;Research and testing have proven that people navigate services and information by thinking in objects - in concrete nouns, not abstract verbs. But so many websites organise their content by taking the opposite approach.&lt;/p&gt;&lt;p&gt; Enter OOUX, a new approach to content and design developed by Sophia Prater…&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"Designing beyond assumptions: how everyday constraints shape user experience",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Kola Wale – Department for Work and Pensions (DWP)",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/designing-beyond-assumptions-how-everyday-constraints-shape-user-experience",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;Every product and service carries traces of the people who built it, their expectations and their idea of what a “normal” user does. Similarly, designing within organisations means working with deadlines, pressure and a lot of best guesses. These assumptions can quietly shape services that exclude users.&lt;/p&gt;&lt;p&gt; In this session, Kola will use lived examples to show how small design choices can create significant barriers…&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"Constraint‑as‑catalyst: the creative researcher’s SCAMPER guide to method adaptation",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Rachel Abbott – Hippo",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/constraint-catalyst-creative-researchers-scamper-guide-method-adaptation",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;The standard research playbook often fails when confronted with real‑world constraints: highly vulnerable user groups, strict security protocols, zero internet access, or rapid crisis events. &lt;/p&gt;&lt;p&gt; In these situations, relying on imagination and creative adaptation is an ethical and practical necessity.&lt;/p&gt;&lt;p&gt; This session moves beyond rigid templates, treating research design as a systematic creative practice…&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"Navigating Your UX career in a competitive market",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Jenny Björkman – Interaktiv Design Studio; Hilary Brownlie – Standard Life",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/navigating-your-ux-career-competitive-market",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;he UX job market is tough. Roles are evolving, competition is fierce, and career progression can feel stalled. This interactive session will equip you with strategic tools to thrive despite uncertainty.&lt;/p&gt;&lt;p&gt; Raise your profile: hear from a qualified career coach and UX consultant on how to stand out through personal branding, networking, mentoring and public speaking…&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"Designing in legacy software: the triumphs and the trap",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Samantha Heighes",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/designing-legacy-software-triumphs-and-trap",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;Samantha has worked in complex SaaS solutions and in UX terms, it’s the gift that keeps on giving. &lt;/p&gt;&lt;p&gt; Like much legacy software, it’s full of forgotten designs, unexpected behaviours and hidden, historical patterns that no longer match the expectations of today’s users.&lt;/p&gt;&lt;p&gt; This talk shares a practical approach and techniques for evolving enterprise software without a complete rewrite.&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"Steel‑toed boots in the boardroom: designing factory floor solutions that stick",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Christian Richards – The Weir Group",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/steel-toed-boots-boardroom-designing-factory-floor-solutions-stick",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;Understanding user needs is the foundation of UX, but adoption is what makes solutions truly valuable.&lt;/p&gt;&lt;p&gt; At Weir, a global industrial manufacturer, the SMART Factory team thought they knew what factory operators needed. Yet their solutions were being ignored (or even physically broken!). &lt;/p&gt;&lt;p&gt; This talk shares how Weir’s UX team partnered with engineers…&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"Transforming probation services: prototype to pilot in 6 weeks",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Keara Drumm, Emma Sutcliffe‑Regan – TPXimpact; Carolina Pizatto – Ministry of Justice",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/transforming-probation-services-prototype-pilot-6-weeks",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;The Ministry of Justice, HM Prison and Probation Service and TPXimpact partner to share their experience of going from prototype to pilot in 6 weeks. &lt;/p&gt;&lt;p&gt;This session will cover their innovative approach to transforming probation services through user‑centred design, research with vulnerable users and modern AI technology in order to combat the prison capacity crisis.&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"Researching UX without a UI: cognitive methods under constraints",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Natalia Mishina – JetBrains",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/researching-ux-without-ui-cognitive-methods-under-constraints",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;What happens when you need to study UX in a product with no interface at all?&lt;/p&gt;&lt;p&gt;In this talk, Natalie will share her experiences researching the Kotlin programming language using cognitive methods, while navigating 2 constraints: no UI and time, and budget limits.&lt;/p&gt;&lt;p&gt; You’ll take part in small interactive exercises…&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"Wrong answers only: why people lie on forms and surveys, and what do about",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Caroline Jarrett – Effortmark Ltd",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/wrong-answers-only-why-people-lie-forms-and-surveys-and-what-do-about",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;If you’re faced with the challenge of incorporating AI into your designs, what is the effect of pouring untruthful data into the AI? &lt;/p&gt;&lt;p&gt; In research in 2025, I discovered that nearly all of us admit to an occasional lie on a form or survey, for privacy reasons, because of uncertainty about the outcome, or because the question offers us wrong answers only.&lt;/p&gt;&lt;p&gt; Which led me to think: What are we doing in our own designs to account for similar behaviour?...&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"Let’s debate: can AI actually solve our design problems?",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Suhail Hussain &amp; Tom Burrows – Government Digital Service",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/lets-debate-can-ai-actually-solve-our-design-problems",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;As our design teams shrink and our budgets tighten, we face a paradox: AI is marketed as our productivity saviour while simultaneously threatening our roles. &lt;/p&gt;&lt;p&gt; Engineering teams have integrated AI into their workflows - can design and research do the same to address today's resource constraints?&lt;/p&gt;&lt;p&gt;This session will use the Debate Club conversation format…&lt;/p&gt;`},</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* ------------------- Day 2 – Thursday 11 June ------------------- */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"a firmament inside",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Michael Kibedi – First and Fifteenth",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/firmament-inside",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;Session details coming soon&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"Why constraints make leadership visible",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Tricia Rambharose – Redthread Consulting and Coaching",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/why-constraints-make-leadership-visible",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;Constraints are a constant in modern work, whether you’re designing services, leading teams, or shaping strategy. Time, budget, organisational structures, and system complexity don’t just limit what’s possible, they reveal how we lead.&lt;/p&gt;&lt;p&gt;In this talk, Tricia reflects on how leadership shows up under constraint, not through authority or process, but through the choices we make when ideal options aren’t available….&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"Practical steps towards a more inclusive practice",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Stéphanie Krus – DWP Digital",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/practical-steps-towards-more-inclusive-practice",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;There is a false belief that making your design accessible requires more time, more money and technical expertise.&lt;/p&gt;&lt;p&gt;This session is for people relatively new to inclusion and accessibility. It will focus on easy, free and quick practical steps.&lt;/p&gt;&lt;p&gt;You will be able to start implementing these practical steps without needing new tools or training, and it won’t take you a lot of time either…&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"Navigating digital sustainability with design principles",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Joanna Masraff &amp; Sathpal Singh – Green PO",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/navigating-digital-sustainability-design-principles",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;Do you want to bring digital sustainability into your work, but you don’t know where to start?&lt;/p&gt;&lt;p&gt;Design principles are an easy way to bring this into the holistic picture of your product thinking.&lt;/p&gt;&lt;p&gt;In this workshop, we will navigate the digital sustainability landscape under 3 themes: Materials, Energy and Societal Impact…&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"Tools as old as time: ancient ways to visualise futures",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Josie Vallely &amp; Jayne Purcell – Social Security Scotland",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/tools-old-time-ancient-ways-visualise-futures",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;Process maps, blueprints, user journeys... UX designers shape future worlds every day by visually mapping them. &lt;/p&gt;&lt;p&gt; We work with tight deadlines, basic tools and stakeholders with ever‑stretched attention spans. Can we embrace these conditions to supercharge our visual storytelling? &lt;/p&gt;&lt;p&gt; Humans have always made maps, or visualised stories, to influence change. In this session we will use examples from old Scottish ways of knowing…&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"Design is Political",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Jane Dolan – The Dolan Method",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/design-political",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;This session explores what happens when design meets politics, when evidence, policy, constraints, and public opinion collide.&lt;/p&gt;&lt;p&gt; Drawing on real government projects, Jane shows how design decisions are never neutral, how to recognise political risks early, and how to stay true to user‑centred design in complex environments.&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"What happens when familiar UI patterns aren’t universal",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Guillaume Vaslin – ENNOstudio (AOE Group)",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/what-happens-when-familiar-ui-patterns-arent-universal",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;Many digital interfaces rely on patterns assumed to be universal: buttons, forms, icons, navigation, error states. Yet these familiar elements can break when used across different cultures or age groups. &lt;/p&gt;&lt;p&gt; This session explores how everyday UX decisions are shaped by hidden cultural assumptions, and how teams can design more inclusive patterns even under tight constraints…&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"Constraints are opportunities: pattern spotting",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Jaskiran Kang – TPXImpact",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/constraints-are-opportunities-pattern-spotting",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;We’re seeing huge overlaps across services and organisations. There’s a need to define the standards of good practice, so it becomes easier to apply repeatable patterns.&lt;/p&gt;&lt;p&gt;Many of us are problem solvers. But big complex knotty service outcomes need community, practice, and sector alignment. More than ever, this type of collaboration is needed. Patterns can create more consistent, efficient, and user‑centred services…&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"Designing AI under pressure: keeping services safe, fair and human",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Mark Skinner – Sopra Steria",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/designing-ai-under-pressure-keeping-services-safe-fair-and-human",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;AI brings real opportunity, but it also brings pressure. &lt;/p&gt;&lt;p&gt; Deadlines compress, expectations rise, and teams often move faster than their thinking. That’s when people slip from view and risks pass by unnoticed.&lt;/p&gt;&lt;p&gt; In this talk, Mark shares practical ways design and research can steady AI work without slowing it down. Using five simple tools, he shows how to keep services aligned to real needs, reduce avoidable harm and use constraints as a catalyst for clearer, safer decisions. &lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"Cut through complexity – the OOPSI Framework",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Jenny Martin – Collaborate Solutions Ltd",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/cut-through-complexity-oopsi-framework",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;OOPSI (Outcomes–Outputs–Process–Scenarios–Inputs) is a collaborative framework that helps you break down complex problems, align across UX, product and engineering, and move from ideas to value quickly. &lt;/p&gt;&lt;p&gt; It provides a simple structure that strengthens storytelling, clarifies intent and builds shared understanding without heavy process…&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"Make trauma‑informed design part of your style guide",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Miriam Vaswani – Content Design London",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/make-trauma-informed-design-part-your-style-guide",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;An evidence‑led style guide makes your products and services more accessible, by helping designers make consistent, useful and inclusive choices about language. &lt;/p&gt;&lt;p&gt; We can strengthen style guidance by incorporating evidence of how people use a product or service while experiencing trauma…&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"Beyond human‑centred design: designing for the ‘more than human’ world",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"James Chudley – Independent",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/beyond-human-centred-design-designing-more-human-world",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;Our quest to put people at the centre of the design process is outdated and must now evolve.&lt;/p&gt;&lt;p&gt;While human‑centred design has unquestionably helped improve lives, this relentless focus on people has blinded us to detrimental consequences for other species, our environment and climate…&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"Vibes‑based data for your sanity",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Reema Vadoliya",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/vibes-based-data-your-sanity",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;With an abundance of data being produced, how do you know which data you should actually be utilising? There always seems to be too much data and simultaneously not enough. &lt;/p&gt;&lt;p&gt;When gut feeling isn't scientific enough, and complex data analysis can feel overwhelming, what approach do you take? Whatever role you work in, leave this session feeling excited by the constraints of data collection and analysis, and empowered to bring vibes into your (data) science.&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"Reflection to action – your way forward",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Laura Dalrymple – Tangity/NTT Data",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/reflection-action-your-way-forward",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;How do you take that crucial first step toward a new chapter in your career?&lt;/p&gt;&lt;p&gt;Being flexible and responsive to changes in the working environment is nothing new.&lt;/p&gt;&lt;p&gt;</p>
+<p class="p1">In fact, UX is a space where there is an expectation that you are able to continuously adapt to new technologies, tools, and cultural shifts.&lt;/p&gt;`},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{title:"What if… You Did It Anyway?",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>speakers:"Jeroen van Geel -Creative Strategist",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>url:"https://uxscotland.net/programme/what-if-you-did-it-anyway",</p>
+<p class="p1"><span class="Apple-converted-space">   </span>desc:`&lt;p&gt;Our field is full of rules. Patterns. Best practices. Constraints that are meant to help, but often tell us exactly where not to look.&lt;/p&gt;&lt;p&gt;This talk is an invitation to misbehave a little. To push against the obvious, break familiar patterns, and use experimentation to see what those constraints are really made of…&lt;/p&gt;`}</p>
+<p class="p1">];</p>
+<p class="p2"><br></p>
+<p class="p1">/* --------------------------------------------------------------</p>
+<p class="p1"><span class="Apple-converted-space">   </span>2️⃣<span class="Apple-converted-space">  </span>Render the cards (title + speakers)</p>
+<p class="p1"><span class="Apple-converted-space">   </span>-------------------------------------------------------------- */</p>
+<p class="p1">const container = document.getElementById('cards');</p>
+<p class="p1">sessions.forEach((s, i) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const card = document.createElement('div');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>card.className = 'card';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>card.dataset.idx = i; <span class="Apple-converted-space">              </span>// keep index for click handling</p>
+<p class="p1"><span class="Apple-converted-space">  </span>card.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="title"&gt;&lt;strong&gt;${s.title}&lt;/strong&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="speakers"&gt;&lt;strong&gt;${s.speakers}&lt;/strong&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>container.appendChild(card);</p>
+<p class="p1">});</p>
+<p class="p2"><br></p>
+<p class="p1">/* --------------------------------------------------------------</p>
+<p class="p1"><span class="Apple-converted-space">   </span>3️⃣<span class="Apple-converted-space">  </span>Modal handling – read the pre‑filled `desc` field.</p>
+<p class="p1"><span class="Apple-converted-space">   </span>-------------------------------------------------------------- */</p>
+<p class="p1">const modal = document.getElementById('modal');</p>
+<p class="p1">const modalTitle = document.getElementById('modalTitle');</p>
+<p class="p1">const modalSpeakers = document.getElementById('modalSpeakers');</p>
+<p class="p1">const modalDesc = document.getElementById('modalDesc');</p>
+<p class="p1">const modalLink = document.getElementById('modalLink');</p>
+<p class="p1">const closeBtn = document.getElementById('closeBtn');</p>
+<p class="p2"><br></p>
+<p class="p1">document.addEventListener('click', e =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const card = e.target.closest('.card');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (!card) return;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const idx = card.dataset.idx;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const sess = sessions[idx];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Wrap title &amp; speakers in &lt;strong&gt; for the modal as well</p>
+<p class="p1"><span class="Apple-converted-space">  </span>modalTitle.innerHTML = `&lt;strong&gt;${sess.title}&lt;/strong&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>modalSpeakers.innerHTML = `&lt;strong&gt;${sess.speakers}&lt;/strong&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>modalDesc.innerHTML = sess.desc || '&lt;p&gt;No description supplied.&lt;/p&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>modalLink.href = sess.url;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>modalLink.textContent = 'Open full session page';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>modal.style.display = 'flex';</p>
+<p class="p1">});</p>
+<p class="p2"><br></p>
+<p class="p1">closeBtn.onclick = () =&gt; modal.style.display = 'none';</p>
+<p class="p1">modal.onclick = e =&gt; { if (e.target===modal) modal.style.display='none'; };</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
